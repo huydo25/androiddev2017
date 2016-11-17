@@ -11,9 +11,11 @@ Students are expected to:
 Member list
 =====================================
 
-*Add student list of your group here*
+Do Quang Huy - USTHBI5-052
+Tran Huong Thao - USTHBI5-
+Doan Bao Trung - USTHBI - 
 
 Project description
 =====================================
 
-*Add your project description here*
+IRC chat client
