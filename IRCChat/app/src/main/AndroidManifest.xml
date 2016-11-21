@@ -19,6 +19,15 @@
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity android:name=".AddServerActivity"
+            android:label="@string/add_new_server"
+            android:theme="@style/Theme.AppCompat.Light">
+            <intent-filter>
+            <action android:name="android.intent.action.ADDSERVERACTIVITY" />
+        </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

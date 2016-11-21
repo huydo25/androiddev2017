@@ -83,4 +83,10 @@
 
     </string>
     <string name="title_activity_test">TestActivity</string>
+	<string name="add_new_server">Add New Server</string>
+	<string name="server_detail">Server Details</string>
+	<string name="adrress">Address</string>
+	<string name="user_detail">User Details</string>
+	<string name="go_back">Go Back</string>
+	<string name="done">Done</string>
 </resources>

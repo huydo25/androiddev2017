@@ -110,6 +110,23 @@ public class MainActivity extends AppCompatActivity{
                 // do something when search is pressed here
                 Toast toast = Toast.makeText(getApplicationContext(), "Add", Toast.LENGTH_SHORT);
                 toast.show();
+                Intent intent = new Intent(MainActivity.this, AddServerActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_setting:
+                // do something when search is pressed here
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Setting", Toast.LENGTH_SHORT);
+                toast1.show();
+                return true;
+            case R.id.action_help:
+                // do something when search is pressed here
+                Toast toast2 = Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT);
+                toast2.show();
+                return true;
+            case R.id.action_exit:
+                // do something when search is pressed here
+                Toast toast3 = Toast.makeText(getApplicationContext(), "Exit", Toast.LENGTH_SHORT);
+                toast3.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
