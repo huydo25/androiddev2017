@@ -7,64 +7,71 @@
     android:paddingTop="@dimen/activity_vertical_margin">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0px"
+        android:layout_weight="1"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Nickname"/>
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Nickname"
+            android:gravity="left|center_vertical"/>
         <EditText
             android:id="@+id/nick_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
             android:hint="Enter"
-            android:inputType="text"
-            android:layout_marginBottom="20dp"/>
+            android:inputType="text" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Alternative Name"/>
-    <EditText
-        android:id="@+id/alter_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter"
-        android:inputType="text"
-        android:layout_marginBottom="20dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Server"/>
-        <!--<EditText-->
-            <!--android:id="@+id/server1_name"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="Description"-->
-            <!--android:inputType="text" />-->
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Alternative Name"
+            android:gravity="left|center"/>
+        <EditText
+            android:id="@+id/alter_name"
+            android:layout_width="0px"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:hint="Enter"
+            android:inputType="text"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Server"
+            android:gravity="center_vertical"/>
         <Spinner
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
             android:id="@+id/list_server"
             android:entries="@array/list_server"></Spinner>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0px"
+        android:layout_weight="3"
+        android:orientation="horizontal">
         <Button
-            android:text="@string/connect"
+            android:text="@string/join"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/connect_button"
-            android:onClick="click" />
+            android:onClick="onClick" />
     </LinearLayout>
 
 </LinearLayout>
