@@ -1,3 +1,86 @@
 <resources>
     <string name="app_name">IRCChat</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="join">Join</string>
+    <string name="button">User: Thao\nServer: Freenode (irc.freenode.org)</string>
+    <string name="your_server">Your Server</string>
+    <string-array name="list_server">
+        <item>Freenode</item>
+        <item>GameSurge</item>
+        <item>IRCHighway</item>
+        <item>2600net</item>
+        <item>AccessIRC</item>
+        <item>AfterNET</item>
+        <item>Chat4all</item>
+        <item>Rizon</item>
+    </string-array>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_chat">IRCChat</string>
+    <string name="large_text">
+        "irc.freenode.org\n\n"
+
+        "	[INFO]	Attempting to connect to “irc.freenode.org”.  Use /cancel to abort.
+	[INFO]	Connecting to irc://irc.freenode.org/ (irc://irc.freenode.org/)… [Cancel]
+	===	*** Looking up your hostname...
+	===	*** Checking Ident
+	===	*** Couldn't look up your hostname
+	===	*** No Ident response
+	===	Welcome to the freenode Internet Relay Chat Network ThaoChatZilla
+	===	Your host is tepper.freenode.net[192.186.157.43/6667], running version ircd-seven-1.1.4
+	===	This server was created Thu Sep 22 2016 at 20:50:06 UTC
+	===	tepper.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+	===	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=@+ CALLERID=g are supported by this server
+	===	CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: are supported by this server
+	===	EXTBAN=$,ajrxz WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU are supported by this server
+	===	There are 146 users and 88138 invisible on 29 servers
+	===	34 IRC Operators online
+	===	4 unknown connection(s)
+	===	52755 channels formed
+	===	I have 3943 clients and 1 servers
+	===	3943 Current local users 3943, max 11539
+	===	88284 Current global users 88284, max 91150
+	===	Highest connection count: 11540 (11539 clients) (596420 connections received)
+	===	- tepper.freenode.net Message of the Day -
+	===	- Welcome to tepper.freenode.net in Buffalo, NY.
+	===	- Thanks to http://www.servermania.com/ for sponsoring
+	===	- this server!
+	===	-
+	===	-
+	===	- TEPPER, SHERI S. (1929-), an American science fiction,
+	===	- horror and mystery novel author, behind more than thirty
+	===	- books, many themed unapologetically eco-feminist. Her
+	===	- writing career started composing children's stories, but
+	===	- moved to adult fiction in 1982. With the 1991 novel
+	===	- 'Beauty' she won the Locus award for Best Fantasy Novel.
+	===	- Her other well-known works include 'Grass' (1989, nominated
+	===	- for Hugo and Locus Awards in 1990) and 'Gate to Women's
+	===	- Country' (1988).
+	===	-
+	===	- Welcome to freenode - supporting the free and open source
+	===	- software communities since 1998.
+	===	-
+	===	- By connecting to freenode you indicate that you have read and
+	===	- accept our policies as set out on http://www.freenode.net
+	===	- freenode runs an open proxy scanner. Please join #freenode for
+	===	- any network-related questions or queries, where a number of
+	===	- volunteer staff and helpful users will be happy to assist you.
+	===	-
+	===	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+	===	- together with like-minded FOSS enthusiasts for talks and
+	===	- real-life collaboration.
+	===	-
+	===	- We would like to thank Private Internet Access
+	===	- (https://www.privateinternetaccess.com/) and the other
+	===	- organisations that help keep freenode and our other projects
+	===	- running for their sustained support.
+	===	-
+	===	- In particular we would like to thank the sponsor
+	===	- of this server, details of which can be found above.
+	===	-
+	---	End of /MOTD command."
+
+    </string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
