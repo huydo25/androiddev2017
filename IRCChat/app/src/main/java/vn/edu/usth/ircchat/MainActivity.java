@@ -33,6 +33,7 @@ import vn.edu.usth.ircchat.Fragment.EmptyFragment;
 import vn.edu.usth.ircchat.Fragment.NameFragment;
 import vn.edu.usth.ircchat.Fragment.ServerFragment;
 
+import static vn.edu.usth.ircchat.R.id.button1;
 import static vn.edu.usth.ircchat.R.id.container;
 
 public class MainActivity extends AppCompatActivity{
@@ -67,15 +68,15 @@ public class MainActivity extends AppCompatActivity{
 //                e.printStackTrace();
 //            }
         }
-//    public void onClick(View v){
-//        EditText et, et1 ;
-//        Spinner sp;
-//        Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
-//        et = (EditText) findViewById(R.id.nick_name);
-//        et1 = (EditText) findViewById(R.id.alter_name);
-//        sp = (Spinner) findViewById(R.id.list_server);
-//
-//        String s = et.getText().toString()+ "\n" + sp.getSelectedItem().toString();
+    public void onClick(View v){
+        EditText et, et1 ;
+        Spinner sp;
+        Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
+        et = (EditText) findViewById(R.id.nick_name);
+        et1 = (EditText) findViewById(R.id.alter_name);
+        sp = (Spinner) findViewById(R.id.list_server);
+
+        String s = "User: "+ et.getText().toString()+ "\n" + "Server: " + sp.getSelectedItem().toString();
 //        nick_server.add(s);
 //        for(int i=0; i< nick_server.size(); i++){
 //            Button button = new Button(this);
@@ -84,9 +85,12 @@ public class MainActivity extends AppCompatActivity{
 //            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.list_my_server);
 //            linearLayout.addView(button);
 //        }
-//        et.getText().clear();
-//        et1.getText().clear();
-//    }
+        bn1 = (Button) findViewById(R.id.button1);
+        bn1.setText(s);
+        bn1.setVisibility(View.VISIBLE);
+        et.getText().clear();
+        et1.getText().clear();
+    }
 
     public void onClickServer(View view){
         Intent intent = new Intent(this,ChatActivity.class);

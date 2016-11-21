@@ -7,6 +7,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
     <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button"
+        android:gravity="left"
+        android:onClick="onClickServer"
+        android:visibility="gone"></Button>
+    <Button
         android:id="@+id/the_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
