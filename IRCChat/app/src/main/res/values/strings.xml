@@ -3,4 +3,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="connect">Connect</string>
+    <string name="your_server">Your Server</string>
+    <string-array name="list_server">
+        <item>Freenode</item>
+        <item>GameSurge</item>
+        <item>IRCHighway</item>
+        <item>2600net</item>
+        <item>AccessIRC</item>
+        <item>AfterNET</item>
+        <item>Chat4all</item>
+        <item>Rizon</item>
+    </string-array>
 </resources>

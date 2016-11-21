@@ -1,5 +1,6 @@
 package vn.edu.usth.ircchat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,16 +11,35 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import vn.edu.usth.ircchat.Fragment.EmptyFragment;
 import vn.edu.usth.ircchat.Fragment.NameFragment;
 import vn.edu.usth.ircchat.Fragment.ServerFragment;
 
-public class MainActivity extends AppCompatActivity {
+import static vn.edu.usth.ircchat.R.id.container;
 
+public class MainActivity extends AppCompatActivity{
+    private TextView tv;
+    private ListView lv;
+    private Button bn, bn1;
+    private ArrayAdapter<String> adapter1;
+    private ArrayList<String> as;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +55,39 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-    }
+//        lv = (ListView) findViewById(R.id.list_view);
+//        String[] items ={" "};
+//        as = new ArrayList<String>(Arrays.asList(items));
+//        System.out.println(as);
+//        adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, as);
+//        try {
+//            lv.setAdapter(adapter1);
+//        } catch(NullPointerException e)
+//        {
+//                e.printStackTrace();
+//            }
+        }
+    public void click(View v){
+        EditText et, et1 ;
+        Spinner sp;
+        Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
+        et = (EditText) findViewById(R.id.nick_name);
+        et1 = (EditText) findViewById(R.id.alter_name);
+        sp = (Spinner) findViewById(R.id.list_server);
+        tv = (TextView) findViewById(R.id.text1);
+        String s = et.getText().toString()+ "\n" + sp.getSelectedItem().toString();
+//        as.add(s);
+//        try {
+//            lv.setAdapter(adapter1);
+//            adapter1.notifyDataSetChanged();
+//        } catch(NullPointerException e)
+//        { e.printStackTrace(); }
 
+        tv.setText(s);
+        et.getText().clear();
+        et1.getText().clear();
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -58,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
     public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 2;
-        private String titles[] = new String[]{"Nickname", "Server"};
+        private String titles[] = new String[]{"New Network", "Server" +
+                ""};
 
         public MainActivityFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
