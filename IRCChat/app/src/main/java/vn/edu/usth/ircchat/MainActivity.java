@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,8 +39,7 @@ public class MainActivity extends AppCompatActivity{
     private TextView tv;
     private ListView lv;
     private Button bn, bn1;
-    private ArrayAdapter<String> adapter1;
-    private ArrayList<String> as;
+    private ArrayList<String> nick_server;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,25 +67,30 @@ public class MainActivity extends AppCompatActivity{
 //                e.printStackTrace();
 //            }
         }
-    public void click(View v){
-        EditText et, et1 ;
-        Spinner sp;
-        Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
-        et = (EditText) findViewById(R.id.nick_name);
-        et1 = (EditText) findViewById(R.id.alter_name);
-        sp = (Spinner) findViewById(R.id.list_server);
-        tv = (TextView) findViewById(R.id.text1);
-        String s = et.getText().toString()+ "\n" + sp.getSelectedItem().toString();
-//        as.add(s);
-//        try {
-//            lv.setAdapter(adapter1);
-//            adapter1.notifyDataSetChanged();
-//        } catch(NullPointerException e)
-//        { e.printStackTrace(); }
+//    public void onClick(View v){
+//        EditText et, et1 ;
+//        Spinner sp;
+//        Toast.makeText(getBaseContext(), "Completed", Toast.LENGTH_SHORT).show();
+//        et = (EditText) findViewById(R.id.nick_name);
+//        et1 = (EditText) findViewById(R.id.alter_name);
+//        sp = (Spinner) findViewById(R.id.list_server);
+//
+//        String s = et.getText().toString()+ "\n" + sp.getSelectedItem().toString();
+//        nick_server.add(s);
+//        for(int i=0; i< nick_server.size(); i++){
+//            Button button = new Button(this);
+//            button.setText(nick_server.get(i));
+//
+//            LinearLayout linearLayout = (LinearLayout) findViewById(R.id.list_my_server);
+//            linearLayout.addView(button);
+//        }
+//        et.getText().clear();
+//        et1.getText().clear();
+//    }
 
-        tv.setText(s);
-        et.getText().clear();
-        et1.getText().clear();
+    public void onClickServer(View view){
+        Intent intent = new Intent(this,ChatActivity.class);
+        startActivity(intent);
     }
     
     @Override
