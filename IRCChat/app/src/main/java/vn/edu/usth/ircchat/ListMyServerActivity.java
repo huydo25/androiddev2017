@@ -21,7 +21,7 @@ public class ListMyServerActivity extends Activity {
         setContentView(R.layout.fragment_server);
 
         // Get ListView object from xml
-        listView = (ListView) findViewById(R.id.list_my_server);
+        //listView = (ListView) findViewById(R.id.list_my_server);
 
         // Defined Array values to show in ListView
         String[] values = new String[] { "Android List View",
