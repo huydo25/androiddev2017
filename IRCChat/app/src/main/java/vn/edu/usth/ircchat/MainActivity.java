@@ -63,28 +63,28 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(myToolbar);
     }
 
-    public void connectServer(View view) {
-        // Do something in response to button click
-        et = (EditText) findViewById(R.id.nick_name);
-        et1 = (EditText) findViewById(R.id.alter_name);
-        Button b = (Button)view;
-        ColorDrawable bColor = (ColorDrawable) b.getBackground();
-        int bColorId = bColor.getColor();
-        Log.i("MainColorButton",String.valueOf(bColorId));
-        if(bColorId == -12532481){
-            b.setBackgroundColor(getResources().getColor(R.color.button_disconnect));
-        }else{
-            b.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        }
-        String buttonText = b.getText().toString();
-        String toastDisplay = et.getText().toString() + " " + et1.getText().toString() + " " + buttonText;
-        Toast.makeText(getBaseContext(), toastDisplay, Toast.LENGTH_SHORT).show();
-        et.getText().clear();
-        et1.getText().clear();
-    }
+//    public void connectServer(View view) {
+//        // Do something in response to button click
+//        et = (EditText) findViewById(R.id.nick_name);
+//        et1 = (EditText) findViewById(R.id.alter_name);
+//        Button b = (Button)view;
+//        ColorDrawable bColor = (ColorDrawable) b.getBackground();
+//        int bColorId = bColor.getColor();
+//        Log.i("MainColorButton",String.valueOf(bColorId));
+//        if(bColorId == -12532481){
+//            b.setBackgroundColor(getResources().getColor(R.color.button_disconnect));
+//        }else{
+//            b.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+//        }
+//        String buttonText = b.getText().toString();
+//        String toastDisplay = et.getText().toString() + " " + et1.getText().toString() + " " + buttonText;
+//        Toast.makeText(getBaseContext(), toastDisplay, Toast.LENGTH_SHORT).show();
+//        et.getText().clear();
+//        et1.getText().clear();
+//    }
 
 
-    public void onClickServer(View view){
+    public void connectServer(View view){
         Intent intent = new Intent(this,ChatActivity.class);
         startActivity(intent);
     }
