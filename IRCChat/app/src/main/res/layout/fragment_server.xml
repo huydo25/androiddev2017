@@ -6,43 +6,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/your_server"
-        android:gravity="center_horizontal"
-        android:paddingBottom="@dimen/activity_horizontal_margin"/>
     <Button
-        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:gravity="left"
-        android:onClick="onClickServer"
-        android:visibility="gone"></Button>
+        android:text="Freenode"
+        android:background="@color/button_disconnect"
+        android:onClick="connectServer"
+        android:layout_marginBottom="10px"
+        android:textColor="@color/button_text"/>
     <Button
-        android:id="@+id/the_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:gravity="left"
-        android:onClick="onClickServer"></Button>
-    <Button
-        android:id="@+id/the_button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:gravity="left" ></Button>
-    <Button
-        android:id="@+id/the_button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:gravity="left" ></Button>
-    <Button
-        android:id="@+id/the_button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button"
-        android:gravity="left" ></Button>
+        android:text="Ustream"
+        android:background="@color/button_disconnect"
+        android:onClick="connectServer"
+        android:layout_marginBottom="10px"
+        android:textColor="@color/button_text"/>
 </LinearLayout>
