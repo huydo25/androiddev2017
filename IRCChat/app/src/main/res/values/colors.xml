@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#546E7A</color>
     <color name="colorAccent">#40C4FF</color>
     <color name="white">#FFFFFF</color>
+    <color name="button_disconnect">#FFFF0000</color>
 </resources>
