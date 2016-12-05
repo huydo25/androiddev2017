@@ -19,15 +19,6 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
-
-import org.jibble.pircbot.IrcException;
-import org.jibble.pircbot.PircBot;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,19 +28,19 @@ import java.net.Socket;
 import java.util.Arrays;
 
 public class ChatActivity extends AppCompatActivity {
-
     TextView serverInfo;
     ScrollView serverInfoScrollView;
     EditText eText;
     Button btn;
-    MyBot bot;
     ConnectIRCServer connectIRCServer;
     Socket socket = null;
     BufferedWriter writer;
     BufferedReader reader;
     BufferedWriter userInput;
     String server = "irc.freenode.net";
-    String channel = "#usth";
+    String channel;
+    String nick;
+    String login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +48,19 @@ public class ChatActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.chat_toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            channel = extras.getString("channel");
+            nick = extras.getString("nickName");
+            login = nick;
+        }else{
+            channel = "#usth";
+            nick = "thao95";
+            login = nick;
+        }
+
         serverInfo = (TextView)findViewById(R.id.serverInfo);
         serverInfoScrollView = (ScrollView) findViewById(R.id.serverInfoScrollView);
-        //bot = new MyBot();
         connectIRCServer = new ConnectIRCServer();
         connectIRCServer.execute(server);
 
@@ -126,13 +127,6 @@ public class ChatActivity extends AppCompatActivity {
                         serverInfo.setText(srt);
                         Toast.makeText(getApplicationContext(),srt,Toast.LENGTH_LONG).show();
                         // Join the channel.
-//                        try {
-//                            writer.write("JOIN " + srt + "\r\n");
-//                            writer.write("PRIVMSG " + srt + " :hello from terminal\r\n");
-//                            writer.flush( );
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
                     } // End of onClick(DialogInterface dialog, int whichButton)
                 }); //End of alert.setPositiveButton
                 alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -165,29 +159,11 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private class ConnectIRCServer extends AsyncTask<String, String, String> {
-        // The server to connect to and our details.
-        String nick = "thao111";
-        String login = "thao111";
 
         // The channel which the bot will join.
         @Override
         protected String doInBackground(String... params) {
             String status = "Fail";
-             //Enable debugging output.
-//            bot.setVerbose(true);
-//
-//            // Connect to the IRC server.
-//            try {
-//                bot.connect(params[0]);
-//                status = "Succes";
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (IrcException e) {
-//                e.printStackTrace();
-//            }
-
             // Connect directly to the IRC server.
             try {
                 socket = new Socket(params[0], 6667);
@@ -240,13 +216,6 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             serverInfo.setText(s);
-        }
-    }
-
-    public class MyBot extends PircBot {
-
-        public MyBot() {
-            this.setName("MyBot");
         }
     }
 }

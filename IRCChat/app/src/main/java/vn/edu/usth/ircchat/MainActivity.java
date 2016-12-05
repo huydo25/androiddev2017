@@ -12,6 +12,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import vn.edu.usth.ircchat.Fragment.EmptyFragment;
 import vn.edu.usth.ircchat.Fragment.NameFragment;
@@ -40,12 +43,13 @@ import vn.edu.usth.ircchat.Fragment.ServerFragment;
 import static vn.edu.usth.ircchat.R.id.container;
 
 public class MainActivity extends AppCompatActivity{
-    EditText et, et1 ;
+    EditText et, et1,et2 ;
     Spinner sp;
-    private TextView tv;
-    private ListView lv;
-    private Button bn, bn1;
-    ArrayList<String> nick_server =new ArrayList<String>();
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
+    private RecyclerViewAdapter mAdapter; // was RecyclerView.Adapter mAdapter;
+    List<String> list_servers = new ArrayList<>();
+    String[] arr_servers = new String[20];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,32 +65,41 @@ public class MainActivity extends AppCompatActivity{
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        // 1.
+        mAdapter = new RecyclerViewAdapter(arr_servers);
     }
 
-//    public void connectServer(View view) {
-//        // Do something in response to button click
-//        et = (EditText) findViewById(R.id.nick_name);
-//        et1 = (EditText) findViewById(R.id.alter_name);
-//        Button b = (Button)view;
-//        ColorDrawable bColor = (ColorDrawable) b.getBackground();
-//        int bColorId = bColor.getColor();
-//        Log.i("MainColorButton",String.valueOf(bColorId));
-//        if(bColorId == -12532481){
-//            b.setBackgroundColor(getResources().getColor(R.color.button_disconnect));
-//        }else{
-//            b.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-//        }
-//        String buttonText = b.getText().toString();
-//        String toastDisplay = et.getText().toString() + " " + et1.getText().toString() + " " + buttonText;
-//        Toast.makeText(getBaseContext(), toastDisplay, Toast.LENGTH_SHORT).show();
-//        et.getText().clear();
-//        et1.getText().clear();
-//    }
+    public void click(View v){
+        et = (EditText)findViewById(R.id.nick_name);
+        et1 = (EditText)findViewById(R.id.alter_name);
+        sp = (Spinner)findViewById(R.id.list_server);
+        et2 = (EditText)findViewById(R.id.channel);
+        String s = et.getText() +" - "+ sp.getSelectedItem().toString() +" - "+ et2.getText();
+        if(list_servers.add(s)){
+            mAdapter.notifyDataSetChanged();
+            list_servers.toArray(arr_servers);
+            Log.i("Current servers", Arrays.toString(arr_servers));
+            Toast.makeText(getBaseContext(), "Added " + s, Toast.LENGTH_SHORT).show();
+            // 2.
+            mLinearLayoutManager = new LinearLayoutManager(this);
+            mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+            // 3.
+            mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
+            mRecyclerView.setHasFixedSize(true);
+            mRecyclerView.setClickable(true);
+            mRecyclerView.setLayoutManager(mLinearLayoutManager);
+            mRecyclerView.setAdapter(mAdapter);
+        }else{
+            Toast.makeText(getBaseContext(), "Not added", Toast.LENGTH_SHORT).show();
+        }
 
-    public void connectServer(View view){
-        Intent intent = new Intent(this,ChatActivity.class);
-        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        list_servers.clear();
     }
     
     @Override
@@ -99,24 +112,20 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
-                // do something when search is pressed here
                 Toast toast = Toast.makeText(getApplicationContext(), "Add", Toast.LENGTH_SHORT);
                 toast.show();
                 Intent intent = new Intent(MainActivity.this, AddServerActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_setting:
-                // do something when search is pressed here
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Setting", Toast.LENGTH_SHORT);
                 toast1.show();
                 return true;
             case R.id.action_help:
-                // do something when search is pressed here
                 Toast toast2 = Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT);
                 toast2.show();
                 return true;
             case R.id.action_exit:
-                // do something when search is pressed here
                 Toast toast3 = Toast.makeText(getApplicationContext(), "Exit", Toast.LENGTH_SHORT);
                 toast3.show();
                 return true;
@@ -147,8 +156,6 @@ public class MainActivity extends AppCompatActivity{
                     return new NameFragment();
                 case 1:
                     return new ServerFragment();
-    //            case  2:
-    //                return WeatherAndForecastFragment.newInstance();
             }
             return new EmptyFragment();// failsafe
         }
