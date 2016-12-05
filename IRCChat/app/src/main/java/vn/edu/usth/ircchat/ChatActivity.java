@@ -185,7 +185,6 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private class ConnectIRCServer extends AsyncTask<String, String, String> {
-
         // The channel which the bot will join.
         @Override
         protected String doInBackground(String... params) {
@@ -244,6 +243,8 @@ public class ChatActivity extends AppCompatActivity {
 
                        }
 
+                        Log.i("ChatActivity",line);
+                        Log.i("ChatActivity",new Message(line).toString());
                     }
                 }
 
@@ -256,13 +257,16 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-            serverInfo.append("\n" + Arrays.toString(values));
+            String receivedLine = Arrays.toString(values);
+            serverInfo.append("\n" + new Message(receivedLine.substring(1,receivedLine.length()-1)).printMess());
             serverInfoScrollView.fullScroll(View.FOCUS_DOWN);
         }
 
         @Override
         protected void onPostExecute(String s) {
-            serverInfo.setText(s);
+            serverInfo.append("\n" +s);
         }
+
+
     }
 }
