@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import vn.edu.usth.ircchat.ChatActivity;
 import vn.edu.usth.ircchat.R;
+import vn.edu.usth.ircchat.RecyclerViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,5 +37,4 @@ public class ServerFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_server, container, false);
     }
-
 }

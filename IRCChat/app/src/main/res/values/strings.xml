@@ -10,10 +10,6 @@
         <item>Freenode</item>
         <item>GameSurge</item>
         <item>IRCHighway</item>
-        <item>2600net</item>
-        <item>AccessIRC</item>
-        <item>AfterNET</item>
-        <item>Chat4all</item>
         <item>Rizon</item>
     </string-array>
     <string name="action_settings">Settings</string>
