@@ -47,9 +47,13 @@ public class ChatActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             server = extras.getString("server");
+            Log.i("ChatActivityserver", server);
             channel = extras.getString("channel");
+            Log.i("ChatActivitychannel", channel);
             nick = extras.getString("nickName");
+            Log.i("ChatActivitynick", nick);
             login = nick;
+            Log.i("ChatActivitylogin", login);
         }else{
             channel = "#usth";
             nick = "thao95";

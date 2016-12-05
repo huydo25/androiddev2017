@@ -1,6 +1,7 @@
 package vn.edu.usth.ircchat.Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,10 +26,15 @@ import vn.edu.usth.ircchat.RecyclerViewAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class ServerFragment extends Fragment {
-
+    int color;
 
     public ServerFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public ServerFragment(int color) {
+        this.color = color;
     }
 
     @Override

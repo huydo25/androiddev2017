@@ -1,15 +1,33 @@
+<!--<resources>-->
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+
+    <!--</style>-->
+
+    <!--<style name="MyToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">-->
+        <!--<item name="android:background">@color/colorPrimary</item>-->
+        <!--<item name="android:textColorPrimary">@color/white</item>-->
+    <!--</style>-->
+<!--</resources>-->
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-
+    <style name="MyTheme" parent="Base.MyTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="MyToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@color/white</item>
+    <style name="MyTheme.Detail" parent="MyTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="MySpinnerStyle" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+        <item name="android:overlapAnchor">true</item>
+    </style>
+
 </resources>

@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="4dp"
-        android:theme="@style/MyToolbar"
         />
     <ScrollView
         android:layout_width="match_parent"

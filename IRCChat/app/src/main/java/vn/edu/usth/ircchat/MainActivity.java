@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity{
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerViewAdapter mAdapter; // was RecyclerView.Adapter mAdapter;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
     List<String> list_servers = new ArrayList<>();
     String[] arr_servers = new String[20];
     @Override
@@ -55,18 +57,27 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PagerAdapter adapter = new MainActivityFragmentPagerAdapter(getSupportFragmentManager());
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
-        pager.setOffscreenPageLimit(2);
-        pager.setAdapter(adapter);
+        //PagerAdapter adapter = new MainActivityFragmentPagerAdapter(getSupportFragmentManager());
+        //ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        setupViewPager(viewPager);
+        //pager.setOffscreenPageLimit(2);
+        //pager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
-        tabLayout.setupWithViewPager(pager);
+        tabLayout = (TabLayout) findViewById(R.id.tab);
+        tabLayout.setupWithViewPager(viewPager);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         // 1.
         mAdapter = new RecyclerViewAdapter(arr_servers);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new NameFragment(getResources().getColor(R.color.accent_material_light)), "New");
+        adapter.addFrag(new ServerFragment(getResources().getColor(R.color.ripple_material_light)), "Active Server(s)");
+        viewPager.setAdapter(adapter);
     }
 
     public void click(View v){
@@ -183,36 +194,59 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
-        private final int PAGE_COUNT = 2;
-        private String titles[] = new String[]{"New Network", "Server" +
-                ""};
-
-        public MainActivityFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
+//    public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
+//        private final int PAGE_COUNT = 2;
+//        private String titles[] = new String[]{"New Network", "Server" +
+//                ""};
+//
+//        public MainActivityFragmentPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return PAGE_COUNT;// number of pages for a ViewPager
+//        }
+//
+//        @Override
+//        public Fragment getItem(int page) {
+//            // returns an instance of Fragment corresponding to the specified page
+//            switch(page) {
+//                case 0:
+//                    return new NameFragment();
+//                case 1:
+//                    return new ServerFragment();
+//            }
+//            return new EmptyFragment();// failsafe
+//        }
+//
+//        @Override
+//        public CharSequence getPageTitle(int page) {
+//            // returns a tab title corresponding to the specified page
+//            return titles[page];
+//        }
+//    }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
-
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
         @Override
         public int getCount() {
-            return PAGE_COUNT;// number of pages for a ViewPager
+            return mFragmentList.size();
         }
-
-        @Override
-        public Fragment getItem(int page) {
-            // returns an instance of Fragment corresponding to the specified page
-            switch(page) {
-                case 0:
-                    return new NameFragment();
-                case 1:
-                    return new ServerFragment();
-            }
-            return new EmptyFragment();// failsafe
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
         }
-
         @Override
-        public CharSequence getPageTitle(int page) {
-            // returns a tab title corresponding to the specified page
-            return titles[page];
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
 }

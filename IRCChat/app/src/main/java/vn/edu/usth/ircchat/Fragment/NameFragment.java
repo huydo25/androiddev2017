@@ -1,6 +1,7 @@
 package vn.edu.usth.ircchat.Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,8 +21,14 @@ import vn.edu.usth.ircchat.R;
  * A simple {@link Fragment} subclass.
  */
 public class NameFragment extends Fragment {
+    int color;
     public NameFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public NameFragment(int color) {
+        this.color = color;
     }
 
     @Override
