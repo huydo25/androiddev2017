@@ -32,9 +32,9 @@ public class Message {
             case "PING":
                 return text2 + " " + text4;
             case "JOIN":
-                return text1 +" has "+ text2 + text3;
+                return text1 +" has "+ text2 + " " + text3;
             case "PRIVMSG":
-                return "<"+text1+"> "+text4;
+                return "<"+text1.substring(0,text1.indexOf('!'))+"> "+text4;
             case "353":
                 return "Current users in channel: "+ text4;
             case "QUIT":

@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="Add Channel"
-        android:id="@+id/addChannel"
-        android:icon="@android:drawable/ic_menu_add"
+        android:title="Reconnect"
+        android:id="@+id/reconnect"
+        android:icon="@android:drawable/ic_menu_rotate"
+        app:showAsAction="always"/>
+    <item
+        android:title="Disconnect"
+        android:id="@+id/disconnect"
+        android:icon="@android:drawable/ic_delete"
         app:showAsAction="always"/>
 </menu>

@@ -161,7 +161,13 @@ public class MainActivity extends AppCompatActivity{
         super.onDestroy();
         list_servers.clear();
     }
-    
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("MainActivity","onStop");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
