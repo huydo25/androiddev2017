@@ -142,18 +142,16 @@ public class ChatActivity extends AppCompatActivity {
                 /* Alert Dialog Code End*/
                 return true;
             case R.id.listUser:
+                String s = "";
                 AlertDialog.Builder alert1 = new AlertDialog.Builder(this);
                 alert1.setTitle("List User in channel: "); //Set Alert dialog title here
                 int temp2 = listUser.indexOf(":");
                 listUser = listUser.substring(temp2 + 1, listUser.length());
-                for(int i=0; i<listUser.length(); i++)
-                {
-                    if(listUser.matches(" "))
-                    {
-                        listUser = listUser.replace(" ", "\n");
-                    }
+                String[] string = listUser.split("\\s+");
+                for(int i=0; i<string.length;i++) {
+                    s = s +"User "+i+ ": "+  string[i] + "\n";
                 }
-                alert1.setMessage(listUser);
+                alert1.setMessage(s);
                 alert1.setNegativeButton("DONE", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         // Canceled.
@@ -162,6 +160,7 @@ public class ChatActivity extends AppCompatActivity {
                 }); //End of alert.setNegativeButton
                 AlertDialog alertDialog1 = alert1.create();
                 alertDialog1.show();
+
                 /* Alert Dialog Code End*/
                     Log.i("List User in channel ", listUser);
                 return true;
