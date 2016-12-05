@@ -18,7 +18,7 @@
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/MyTheme" />
 
         <activity android:name=".AddServerActivity"
             android:label="@string/add_new_server"
