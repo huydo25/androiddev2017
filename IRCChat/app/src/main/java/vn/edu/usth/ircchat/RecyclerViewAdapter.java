@@ -43,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     String[] sendToChatActivity = getNameServerChannel(SubjectValues[pos]);
                     Intent intent =  new Intent(context, ChatActivity.class);
                     intent.putExtra("nickName",sendToChatActivity[0]);
+                    intent.putExtra("server",sendToChatActivity[1]);
                     intent.putExtra("channel",sendToChatActivity[2]);
                     context.startActivity(intent);
                 }
@@ -55,13 +56,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             nickName = nickName.replaceAll("\\s","");
             String server = s.substring(firstDash+1, lastDash);
             server = server.replaceAll("\\s","");
+            server = getServerUrl(server);
             String channel = s.substring(lastDash+1);
             channel = channel.replaceAll("\\s","");
             String[] arr = new String[3];
             arr[0] = nickName;
             arr[1] = server;
-            arr[2] = "#"+channel;
+            arr[2] = channel;
             return arr;
+        }
+
+        private String getServerUrl(String s){
+            switch (s){
+                case "Freenode":
+                    return "irc.freenode.net";
+                case "GameSurge":
+                    return "irc.gamesurge.net";
+                case "IRCHighway":
+                    return "irc.irchighway.net";
+                case "Rizon":
+                    return "irc.rizon.net";
+                default:
+                    return "irc.freenode.net";
+            }
         }
     }
 

@@ -34,13 +34,9 @@ public class ChatActivity extends AppCompatActivity {
     Button btn;
     ConnectIRCServer connectIRCServer;
     Socket socket = null;
-    BufferedWriter writer;
+    BufferedWriter writer, userInput;
     BufferedReader reader;
-    BufferedWriter userInput;
-    String server = "irc.freenode.net";
-    String channel;
-    String nick;
-    String login;
+    String server, channel, nick, login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +46,7 @@ public class ChatActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            server = extras.getString("server");
             channel = extras.getString("channel");
             nick = extras.getString("nickName");
             login = nick;

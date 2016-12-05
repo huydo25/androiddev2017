@@ -43,7 +43,7 @@ import vn.edu.usth.ircchat.Fragment.ServerFragment;
 import static vn.edu.usth.ircchat.R.id.container;
 
 public class MainActivity extends AppCompatActivity{
-    EditText et, et1,et2 ;
+    EditText et, et1, et2;
     Spinner sp;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity{
         et1 = (EditText)findViewById(R.id.alter_name);
         sp = (Spinner)findViewById(R.id.list_server);
         et2 = (EditText)findViewById(R.id.channel);
-        String s = et.getText() +" - "+ sp.getSelectedItem().toString() +" - "+ et2.getText();
+        String s = et.getText() +" - "+ sp.getSelectedItem().toString() +" - #"+ et2.getText();
         if(list_servers.add(s)){
             mAdapter.notifyDataSetChanged();
             list_servers.toArray(arr_servers);
