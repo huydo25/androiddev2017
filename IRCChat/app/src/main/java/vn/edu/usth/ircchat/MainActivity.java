@@ -80,12 +80,11 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(getBaseContext(), "Please enter a channel", Toast.LENGTH_SHORT).show();
         }
         else{
-            populateMyServers(et.getText().toString(),sp.getSelectedItem().toString(),et2.getText().toString());
+            checkNameServerChannel(et.getText().toString().replaceAll("\\s", ""),sp.getSelectedItem().toString().replaceAll("\\s", ""),et2.getText().toString().replaceAll("\\s", ""));
         }
     }
 
-    public void populateMyServers(String s1, String s2, String s3){
-        String s = s1 +" - "+ s2 +" - #"+ s3;
+    public void populateMyServers(String s){
         if(list_servers.add(s)){
             mAdapter.notifyDataSetChanged();
             list_servers.toArray(arr_servers);
@@ -103,6 +102,46 @@ public class MainActivity extends AppCompatActivity{
             mRecyclerView.setAdapter(mAdapter);
         }else{
             Toast.makeText(getBaseContext(), "Not added", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean compareWithPreviousServer(String s1, String s2, String s3){
+        boolean duplicate = false;
+        for (int i=0; i<arr_servers.length; i++) {
+            if (arr_servers[i] != null) {
+                int firstDash = arr_servers[i].indexOf('-');
+                int lastDash = arr_servers[i].lastIndexOf('-');
+                String nickName = arr_servers[i].substring(0, firstDash);
+                nickName = nickName.replaceAll("\\s", "");
+                String server = arr_servers[i].substring(firstDash + 1, lastDash);
+                server = server.replaceAll("\\s", "");
+                String channel = arr_servers[i].substring(lastDash + 1);
+                channel = channel.replaceAll("\\s", "");
+                if (s2.equals(server) && s3.equalsIgnoreCase(channel)) {
+                    Log.i("MainActivity","same channel and server");
+                    duplicate = true;
+                    break;
+                }
+            }else{
+                break;
+            }
+        }
+        return duplicate;
+    }
+
+    public void checkNameServerChannel(String s1, String s2, String s3){
+        String s = s1 +" - "+ s2 +" - #"+ s3;
+        if (arr_servers[0] == null){
+            Log.i("MainActivity","First added!");
+            populateMyServers(s);
+        }else{
+            Log.i("MainActivity","Check next added!");
+            if(compareWithPreviousServer(s1,s2,"#"+s3)){
+                Toast.makeText(getBaseContext(), "This channel and server already exist!", Toast.LENGTH_SHORT).show();
+            }else{
+                Log.i("MainActivity","Next added!");
+                populateMyServers(s);
+            }
         }
     }
 
