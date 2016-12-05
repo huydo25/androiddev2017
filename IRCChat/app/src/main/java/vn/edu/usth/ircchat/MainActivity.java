@@ -74,7 +74,18 @@ public class MainActivity extends AppCompatActivity{
         et1 = (EditText)findViewById(R.id.alter_name);
         sp = (Spinner)findViewById(R.id.list_server);
         et2 = (EditText)findViewById(R.id.channel);
-        String s = et.getText() +" - "+ sp.getSelectedItem().toString() +" - #"+ et2.getText();
+        if(et.getText().length() == 0){
+            Toast.makeText(getBaseContext(), "Please enter a nickname", Toast.LENGTH_SHORT).show();
+        }else if(et2.getText().length() == 0){
+            Toast.makeText(getBaseContext(), "Please enter a channel", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            populateMyServers(et.getText().toString(),sp.getSelectedItem().toString(),et2.getText().toString());
+        }
+    }
+
+    public void populateMyServers(String s1, String s2, String s3){
+        String s = s1 +" - "+ s2 +" - #"+ s3;
         if(list_servers.add(s)){
             mAdapter.notifyDataSetChanged();
             list_servers.toArray(arr_servers);
@@ -93,7 +104,6 @@ public class MainActivity extends AppCompatActivity{
         }else{
             Toast.makeText(getBaseContext(), "Not added", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
