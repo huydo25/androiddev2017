@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void populateMyServers(String s){
         if(list_servers.add(s)){
+            //NOTIFY RECYCLERVIEW that we have add an item.\
             mAdapter.notifyDataSetChanged();
             list_servers.toArray(arr_servers);
             Log.i("Current servers", Arrays.toString(arr_servers));

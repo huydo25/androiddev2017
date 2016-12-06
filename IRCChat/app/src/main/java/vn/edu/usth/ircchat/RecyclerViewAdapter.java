@@ -94,9 +94,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textView.setText(SubjectValues[position]);
         if(SubjectValues[position] != null) {
-            //        Get the first letter of list item
+            //Get the first letter of list item
             letter = SubjectValues[position].substring(0, 1);
-//        Create a new TextDrawable for our image's background
+            //Create a new TextDrawable for our image's background
             TextDrawable drawable = TextDrawable.builder()
                     .buildRound(letter, generator.getRandomColor());
             holder.letter.setImageDrawable(drawable);

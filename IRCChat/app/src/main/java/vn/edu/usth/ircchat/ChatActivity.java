@@ -88,13 +88,14 @@ public class ChatActivity extends AppCompatActivity {
                             serverInfo.post(new Runnable() {
                                 public void run() {
                                     serverInfo.append("\n" + "<"+nick+"> "+str);
+                                    serverInfoScrollView.fullScroll(View.FOCUS_DOWN);
                                     eText.getText().clear();
                                 }
                             });
                         }else {
                             ChatActivity.this.runOnUiThread(new Runnable() {
                                 public void run() {
-                                    Toast.makeText(ChatActivity.this, "Socket Null", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ChatActivity.this, "You have been disconnected", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -310,7 +311,7 @@ public class ChatActivity extends AppCompatActivity {
         // The channel which the bot will join.
         @Override
         protected String doInBackground(String... params) {
-            String status = "Disconnect to server";
+            String status = "Disconnect server";
             // Connect directly to the IRC server.
             try {
                 if (socket == null) {
@@ -377,10 +378,10 @@ public class ChatActivity extends AppCompatActivity {
                 publishProgress("Connection has timed out!");
             } catch (UnknownHostException e) {
                 e.printStackTrace();
-                publishProgress("Catch UnknownHostException!");
+                //publishProgress("Catch UnknownHostException!");
             } catch (IOException e) {
                 e.printStackTrace();
-                publishProgress("Catch IOException!");
+                //publishProgress("Catch IOException!");
             }
 
 

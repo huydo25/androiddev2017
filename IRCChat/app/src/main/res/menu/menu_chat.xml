@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:title="List User"
+        android:id="@+id/listUser"
+        android:icon="@drawable/ic_action_user_group"
+        app:showAsAction="always"/>
+    <item
         android:title="Reconnect"
         android:id="@+id/reconnect"
         android:icon="@android:drawable/ic_menu_rotate"
@@ -10,10 +15,5 @@
         android:title="Disconnect"
         android:id="@+id/disconnect"
         android:icon="@android:drawable/ic_delete"
-        app:showAsAction="always"/>
-    <item
-        android:title="List User"
-        android:id="@+id/listUser"
-        android:icon="@drawable/user_group"
         app:showAsAction="always"/>
 </menu>
