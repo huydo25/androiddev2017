@@ -11,4 +11,9 @@
         android:id="@+id/disconnect"
         android:icon="@android:drawable/ic_delete"
         app:showAsAction="always"/>
+    <item
+        android:title="List User"
+        android:id="@+id/listUser"
+        android:icon="@drawable/user_group"
+        app:showAsAction="always"/>
 </menu>

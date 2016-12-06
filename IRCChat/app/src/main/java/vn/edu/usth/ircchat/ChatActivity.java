@@ -40,6 +40,7 @@ public class ChatActivity extends AppCompatActivity {
     BufferedWriter writer, userInput;
     BufferedReader reader;
     String server, channel, nick, login;
+    String listUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,6 +248,29 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 }.start();
                 return true;
+            case R.id.listUser:
+                String s = "";
+                AlertDialog.Builder alert1 = new AlertDialog.Builder(this);
+                alert1.setTitle("List User in channel: "); //Set Alert dialog title here
+                int temp2 = listUser.indexOf(":");
+                listUser = listUser.substring(temp2 + 1, listUser.length());
+                String[] string = listUser.split("\\s+");
+                for(int i=0; i<string.length;i++) {
+                    s = s +"User "+i+ ": "+  string[i] + "\n";
+                }
+                alert1.setMessage(s);
+                alert1.setNegativeButton("DONE", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                        dialog.cancel();
+                    }
+                }); //End of alert.setNegativeButton
+                AlertDialog alertDialog1 = alert1.create();
+                alertDialog1.show();
+
+                /* Alert Dialog Code End*/
+                    Log.i("List User in channel ", listUser);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -322,8 +346,29 @@ public class ChatActivity extends AppCompatActivity {
                         writer.flush( );
                     }
                     else {
-                        // Print the raw line received by the bot.
+                        // Print the raw line received by the bot
                         publishProgress(line);
+                        if(line.matches(".*\\ @ "+channel +" :\\b.*"))
+                        {
+                            listUser = " ";
+                            int temp = line.indexOf(channel+" :");
+                            listUser= line.substring(temp,line.length()) + " ";
+                        }
+                       if(line.matches("(.*)JOIN(.*)"))
+                       {
+                           int temp1 = line.indexOf("!");
+                           String new_user = line.substring(1,temp1);
+                           listUser = listUser + new_user + "";
+                       }
+                       if(line.matches("(.*)QUIT(.*)"))
+                       {
+                           System.out.println("Lines :" + line);
+                           int temp1 = line.indexOf("!");
+                           String quit_user= line.substring(1,temp1);
+                           listUser=listUser.replace(quit_user, "");
+
+                       }
+
                         Log.i("ChatActivity",line);
                         Log.i("ChatActivity",new Message(line).toString());
                     }
